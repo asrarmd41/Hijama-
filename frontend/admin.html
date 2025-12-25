@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ================= LOGIN SECTION ================= -->
+<div id="loginBox">
+  <h2>Admin Login</h2>
+
+  <input id="user" placeholder="Username"><br><br>
+  <input id="pass" type="password" placeholder="Password"><br><br>
+
+  <button onclick="login()">Login</button>
+</div>
+
+<!-- ================= DASHBOARD SECTION ================= -->
+<div class="dashboard" id="dashboard" style="display:none">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h2>Hijama Admin</h2>
+    <button onclick="logout()">Logout</button>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+
+    <h1>Dashboard</h1>
+
+    <!-- CARDS -->
+    <div class="cards">
+      <div class="card">
+        <h3>Total Appointments</h3>
+        <p id="total">0</p>
+      </div>
+      <div class="card">
+        <h3>Today</h3>
+        <p id="today">0</p>
+      </div>
+    </div>
+
+    <!-- ================= APPOINTMENTS TABLE ================= -->
+    <h2>Appointments</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Therapy</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody id="tableBody">
+        <!-- Appointments load here -->
+      </tbody>
+    </table>
+
+    <!-- ================= THERAPY MANAGEMENT ================= -->
+    <h2>Manage Therapies & Prices</h2>
+
+    <input id="tname" placeholder="Therapy Name">
+    <input id="tprice" placeholder="Price">
+    <input id="tdesc" placeholder="Description">
+    <button onclick="addTherapy()">Add Therapy</button>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody id="therapyTable">
+        <!-- Therapies load here -->
+      </tbody>
+    </table>
+
+  </main>
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>
