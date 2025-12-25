@@ -1,9 +1,11 @@
 console.log("Hijama Clinic Website Loaded");
 
-// 🔗 LIVE BACKEND BASE URL (Render)
+// ✅ LIVE BACKEND (Render)
 const BASE_URL = "https://hijama-backend.onrender.com";
 
-// Load therapies from backend
+// --------------------
+// LOAD THERAPIES
+// --------------------
 function loadTherapies() {
   fetch(`${BASE_URL}/therapies`)
     .then(res => {
@@ -11,37 +13,32 @@ function loadTherapies() {
       return res.json();
     })
     .then(data => {
-      const list = document.getElementById("therapyList");
       const select = document.getElementById("therapy");
-
-      list.innerHTML = "";
-      select.innerHTML = "<option value=''>Select Therapy</option>";
+      select.innerHTML = `<option value="">Select Therapy</option>`;
 
       data.forEach(t => {
-        list.innerHTML += `
-          <li>
-            <strong>${t.name}</strong> – ₹${t.price}<br>
-            <small>${t.description || "No description available"}</small>
-          </li>
-        `;
-
-        select.innerHTML += `<option value="${t.name}">${t.name}</option>`;
+        const option = document.createElement("option");
+        option.value = t.name;
+        option.textContent = `${t.name} – ₹${t.price}`;
+        select.appendChild(option);
       });
     })
     .catch(err => {
       console.error(err);
-      alert("Unable to load therapies. Please try again later.");
+      alert("Unable to load therapies. Please refresh.");
     });
 }
 
-// Book appointment
+// --------------------
+// BOOK APPOINTMENT
+// --------------------
 function bookAppointment() {
-  const nameInput = document.getElementById("name");
-  const phoneInput = document.getElementById("phone");
-  const therapyInput = document.getElementById("therapy");
-  const dateInput = document.getElementById("date");
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const therapy = document.getElementById("therapy").value;
+  const date = document.getElementById("date").value;
 
-  if (!nameInput.value || !phoneInput.value || !therapyInput.value || !dateInput.value) {
+  if (!name || !phone || !therapy || !date) {
     alert("Please fill all fields");
     return;
   }
@@ -49,29 +46,26 @@ function bookAppointment() {
   fetch(`${BASE_URL}/appointments`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      name: nameInput.value,
-      phone: phoneInput.value,
-      therapy: therapyInput.value,
-      date: dateInput.value
-    })
+    body: JSON.stringify({ name, phone, therapy, date })
   })
     .then(res => {
       if (!res.ok) throw new Error("Booking failed");
       return res.json();
     })
     .then(() => {
-      alert("✅ Appointment booked successfully");
-      nameInput.value = "";
-      phoneInput.value = "";
-      therapyInput.value = "";
-      dateInput.value = "";
+      alert("✅ Appointment booked successfully!");
+
+      // Reset form
+      document.getElementById("name").value = "";
+      document.getElementById("phone").value = "";
+      document.getElementById("therapy").value = "";
+      document.getElementById("date").value = "";
     })
     .catch(err => {
       console.error(err);
-      alert("❌ Failed to book appointment. Try again.");
+      alert("❌ Failed to book appointment");
     });
 }
 
-// Load therapies on page load
+// AUTO LOAD
 loadTherapies();
