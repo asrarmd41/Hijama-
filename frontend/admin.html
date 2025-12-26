@@ -45,45 +45,25 @@
     <!-- ================= APPOINTMENTS TABLE ================= -->
     <h2>Appointments</h2>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Phone</th>
-          <th>Therapy</th>
-          <th>Date</th>
-          <th>Status</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
+<table class="appointments-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Date</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
 
-      <tbody id="tableBody">
-        <!-- Appointments load here -->
-      </tbody>
-    </table>
+  <tbody id="appointmentsTable">
+    <!-- rows injected by JS -->
+  </tbody>
+</table>
+
 
     <!-- ================= THERAPY MANAGEMENT ================= -->
-    <h2>Manage Therapies & Prices</h2>
-
-    <input id="tname" placeholder="Therapy Name">
-    <input id="tprice" placeholder="Price">
-    <input id="tdesc" placeholder="Description">
-    <button onclick="addTherapy()">Add Therapy</button>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Price</th>
-          <th>Description</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-
-      <tbody id="therapyTable">
-        <!-- Therapies load here -->
-      </tbody>
-    </table>
+    
 
   </main>
 </div>

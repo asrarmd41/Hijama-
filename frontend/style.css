@@ -156,3 +156,56 @@ footer {
     padding: 25px;
   }
 }
+/* ================= ADMIN TABLE ================= */
+
+.appointments-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.appointments-table th,
+.appointments-table td {
+  border: 1px solid #d6e5dc;   /* table lines */
+  padding: 14px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.appointments-table th {
+  background: #0f5132;
+  color: white;
+  font-weight: 600;
+}
+
+.appointments-table tr:nth-child(even) {
+  background: #f4fbf7;
+}
+
+.appointments-table tr:hover {
+  background: #e2f3ea;
+}
+
+/* Action buttons inside table */
+.appointments-table button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  margin: 4px;
+}
+
+.appointments-table .approve-btn {
+  background: linear-gradient(120deg, #198754, #0f5132);
+  color: white;
+}
+
+.appointments-table .delete-btn {
+  background: linear-gradient(120deg, #dc3545, #a71d2a);
+  color: white;
+}
