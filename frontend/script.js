@@ -35,7 +35,6 @@ function loadTherapies() {
 function bookAppointment() {
   const name = document.getElementById("name").value.trim();
   const phone = document.getElementById("phone").value.trim();
-  const therapy = document.getElementById("therapy").value;
   const date = document.getElementById("date").value;
 
   if (!name || !phone || !therapy || !date) {
